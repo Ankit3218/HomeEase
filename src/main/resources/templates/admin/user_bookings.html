@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Bookings - HomeEase</title>
+    <link rel="stylesheet" href="/css/user_booking.css">
+</head>
+<body>
+
+<header class="app-header">
+    <img src="/images/logo.png" alt="HomeEase Logo">
+    <h2>HomeEase</h2>
+</header>
+
+<main class="container">
+    <h2 th:text="'📋 Bookings of ' + ${user.name}"></h2>
+
+    <a href="/admin/users" class="back-link">← Back to Users</a>
+
+    <div class="booking-list" th:if="${#lists.isEmpty(bookings)}">
+        <p class="no-booking">No bookings available for this user.</p>
+    </div>
+
+    <div class="booking-card" th:each="booking : ${bookings}">
+        <div class="booking-info">
+            <p><strong>Booking ID:</strong> <span th:text="${booking.id}"></span></p>
+            <p><strong>Service:</strong> <span th:text="${booking.service.title}"></span></p>
+            <p><strong>Date:</strong> <span th:text="${#temporals.format(booking.bookingDate, 'dd-MM-yyyy HH:mm')}"></span></p>
+            <p><strong>Status:</strong> <span th:text="${booking.status}"></span></p>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

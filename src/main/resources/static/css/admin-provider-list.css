@@ -1,0 +1,110 @@
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f6f9;
+    padding: 40px 20px;
+    color: #333;
+}
+
+/* Title */
+h2 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #2c3e50;
+}
+
+/* Table Container */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Table Head */
+thead {
+    background-color: #007bff;
+    color: white;
+}
+
+th {
+    padding: 15px 12px;
+    text-align: left;
+    font-size: 15px;
+}
+
+/* Table Body */
+tbody tr {
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s ease;
+}
+
+tbody tr:hover {
+    background-color: #f1f9ff;
+}
+
+td {
+    padding: 14px 12px;
+    font-size: 14px;
+    vertical-align: top;
+}
+
+/* Services List */
+td ul {
+    margin: 0;
+    padding-left: 18px;
+}
+
+td ul li {
+    font-size: 13px;
+    color: #555;
+}
+
+/* Actions */
+.action {
+    text-align: center;
+}
+
+.action a {
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    transition: background 0.3s ease;
+}
+
+.edit a {
+    background-color: #28a745;
+}
+
+.edit a:hover {
+    background-color: #218838;
+}
+
+.bookings a {
+    background-color: #17a2b8;
+}
+
+.bookings a:hover {
+    background-color: #138496;
+}
+
+/* Responsive Table Scroll (Optional) */
+@media screen and (max-width: 768px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}

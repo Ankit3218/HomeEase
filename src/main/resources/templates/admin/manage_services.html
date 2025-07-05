@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Services - HomeEase</title>
+    <link rel="stylesheet" type="text/css" href="/css/manage_services.css" />
+</head>
+<body>
+
+<header class="app-header">
+    <img src="/images/logo.png" alt="HomeEase Logo">
+    <h2>HomeEase</h2>
+</header>
+
+<main class="container">
+    <div class="header-section">
+        <h2>🛠 All Services</h2>
+        <a href="/admin/services/add" class="add-btn">+ Add New Service</a>
+    </div>
+
+    <table class="services-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="service : ${services}">
+                <td th:text="${service.id}">1</td>
+                <td th:text="${service.title}">Plumbing</td>
+                <td>₹<span th:text="${service.price}">250</span></td>
+                <td><img th:src="@{/images/{img}(img=${service.imageUrl})}" width="80" height="50" style="object-fit: cover; border-radius: 6px;"></td>
+                <td>
+                    <a th:href="@{'/admin/services/edit/' + ${service.id}}" class="edit-btn">✏️ Edit</a>
+                    <a th:href="@{'/admin/services/delete/' + ${service.id}}" onclick="return confirm('Are you sure?')" class="delete-btn">🗑 Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="footer-link">
+        <a href="/admin/bookings">📋 View All Bookings</a>
+    </div>
+</main>
+
+</body>
+</html>

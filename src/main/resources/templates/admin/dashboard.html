@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Admin Dashboard - HomeEase</title>
+    <link rel="stylesheet" href="/css/admin-dashboard.css" />
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <h2>Admin Panel</h2>
+    <a href="/admin/services">🛠 Manage Services</a>
+    <a href="/admin/users">👥 Manage Users</a>
+    <a href="/admin/bookings">📅 View Bookings</a>
+    <a href="/admin/flagged-users">🚩 Flagged Users</a>
+    <a href="/admin/coupons">🏷 Manage Coupons</a>
+    <a href="/admin/providers">👨‍🔧 Manage Providers</a>
+    <a href="/admin/bookings/export">⬇️ Export Bookings (CSV)</a>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+
+    <header>
+        <img src="/images/logo.png" alt="HomeEase Logo" />
+        <h1>Admin Dashboard</h1>
+    </header>
+
+    <!-- Dashboard Stats -->
+    <div class="card-grid">
+        <div class="card">
+            <h3>Total Services</h3>
+            <span th:text="${servicesCount}">0</span>
+        </div>
+        <div class="card">
+            <h3>Total Users</h3>
+            <span th:text="${usersCount}">0</span>
+        </div>
+        <div class="card">
+            <h3>Total Bookings</h3>
+            <span th:text="${bookingsCount}">0</span>
+        </div>
+        <div class="card">
+            <h3>Total Revenue</h3>
+            ₹<span th:text="${totalRevenue}">0</span>
+        </div>
+    </div>
+
+    <!-- Booking Status -->
+    <h2 class="section-title">📈 Booking by Status</h2>
+    <ul class="stat-list">
+        <li th:each="entry : ${bookingStatusCount}">
+            <span th:text="${entry.key}"></span>: <span th:text="${entry.value}"></span>
+        </li>
+    </ul>
+
+    <!-- Monthly Bookings -->
+    <h2 class="section-title">📅 Bookings (Last 6 Months)</h2>
+    <ul class="stat-list">
+        <li th:each="entry : ${monthlyBookingCount}">
+            <span th:text="${entry.key}"></span>: <span th:text="${entry.value}"></span>
+        </li>
+    </ul>
+
+</div>
+</body>
+</html>

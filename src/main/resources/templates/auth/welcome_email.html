@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Welcome to HomeEase</title>
+     <link rel="stylesheet" type="text/css" href="/css/welcome_email.css" />
+</head>
+<body style="font-family: Arial, sans-serif;">
+<header style="display: flex; align-items: center; padding: 10px;">
+    <img src="/images/logo.png" alt="HomeEase Logo" style="height: 50px; margin-right: 10px;">
+    <h2 style="margin: 0;">HomeEase</h2>
+</header>
+
+    <h2>Hello <span th:text="${name}">User</span>,</h2>
+    <p>Welcome to <strong>HomeEase</strong>! 🎉</p>
+    <p>We’re excited to have you with us. Start exploring smart home services now.</p>
+    <p>Let us know if you have any questions!</p>
+    <br>
+    <p>Regards,<br><b>HomeEase Team</b></p>
+</body>
+</html>

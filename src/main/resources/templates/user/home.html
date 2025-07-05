@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Service Detail</title>
+    <link rel="stylesheet" type="text/css" href="/css/home.css" />
+</head>
+<body>
+<header style="display: flex; align-items: center; padding: 10px;">
+    <img src="/images/logo.png" alt="HomeEase Logo" style="height: 50px; margin-right: 10px;">
+    <h2 style="margin: 0;">HomeEase</h2>
+</header>
+
+
+<div th:if="${service != null}">
+    <h1 th:text="${service.title}">Service Title</h1>
+    <p th:text="${service.description}">Service Description</p>
+
+    <img th:src="@{/images/{img}(img=${service.imageUrl})}" alt="Service Image" width="200" height="150" />
+
+    <p>Price: ₹<span th:text="${service.price}">0</span></p>
+
+    <form th:action="@{/book}" method="post">
+        <input type="hidden" name="serviceId" th:value="${service.id}" />
+        <button type="submit">Buy Now</button>
+    </form>
+</div>
+<!--
+<h2>Your Previous Bookings</h2>
+
+<div th:if="${#lists.isEmpty(userBookings)}">
+    <p>You haven't booked any services yet.</p>
+</div>
+
+<div th:each="booking : ${userBookings}">
+    <h4 th:text="${booking.service.title}"></h4>
+    <p th:text="'Date: ' + ${booking.bookingDate}"></p>
+    <p th:text="'Amount: ₹' + ${booking.totalAmount}"></p>
+    <p th:text="'Status: ' + ${booking.status}"></p>
+    <hr/>
+</div>
+-->
+
+<a href="/services">Back to all services</a>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My Bookings</title>
+    <link rel="stylesheet" type="text/css" href="/css/user-booking.css" />
+</head>
+<body>
+<div class="page-container">
+    <!-- Header -->
+    <header class="header">
+        <img src="/images/logo.png" alt="HomeEase Logo">
+        <h2>HomeEase</h2>
+    </header>
+
+    <!-- Content -->
+    <main class="main-content">
+        <h1>Your Active Bookings</h1>
+
+        <div th:if="${#lists.isEmpty(bookings)}">
+            <p>You have no active bookings.</p>
+        </div>
+
+        <div th:each="booking : ${bookings}" class="booking-card">
+            <h3 th:text="${booking.service.title}"></h3>
+            <p th:text="${booking.service.description}"></p>
+            <p><b>Booked On:</b> <span th:text="${booking.bookingDate}"></span></p>
+            <p><b>Status:</b> <span th:text="${booking.status}"></span></p>
+            <p><b>Price Paid:</b> ₹<span th:text="${booking.totalAmount}"></span></p>
+
+            <!-- Track -->
+            <a th:href="@{/user/track-booking(bookingId=${booking.id})}" class="btn track">Track Booking</a>
+
+            <!-- Cancel -->
+            <form th:action="@{/user/bookings/cancel/{bookingId}(bookingId=${booking.id})}" method="post">
+                <label>Reason for cancellation:</label>
+                <textarea name="reason" required></textarea>
+                <button type="submit" class="btn cancel" onclick="return confirm('Are you sure you want to cancel this booking?')">Cancel Booking</button>
+            </form>
+
+            <!-- Invoice -->
+            <form th:action="@{/download-invoice}" method="get">
+                <input type="hidden" name="bookingId" th:value="${booking.id}" />
+                <button type="submit" class="btn">Download Invoice</button>
+            </form>
+
+            <!-- Review -->
+            <div th:if="${userReviews[booking.service.id] != null}">
+                <p><b>Your Review:</b></p>
+                <p>Rating: <span th:text="${userReviews[booking.service.id].rating}"></span>/5</p>
+                <p>Comment: <span th:text="${userReviews[booking.service.id].comment}"></span></p>
+
+                <form th:action="@{/user/review/save}" method="post">
+                    <input type="hidden" name="serviceId" th:value="${booking.service.id}" />
+                    <input type="hidden" name="reviewId" th:value="${userReviews[booking.service.id].id}" />
+
+                    <label>Update Rating:</label>
+                    <select name="rating" required>
+                        <option value="5">★★★★★</option>
+                        <option value="4">★★★★</option>
+                        <option value="3">★★★</option>
+                        <option value="2">★★</option>
+                        <option value="1">★</option>
+                    </select>
+                    <textarea name="comment" th:text="${userReviews[booking.service.id].comment}" required></textarea>
+                    <button type="submit" class="btn">Update Review</button>
+                </form>
+
+                <form th:action="@{/user/review/delete/{id}(id=${userReviews[booking.service.id].id})}" method="post">
+                    <button type="submit" class="btn cancel" onclick="return confirm('Are you sure to delete this review?')">Delete Review</button>
+                </form>
+            </div>
+
+            <div th:if="${userReviews[booking.service.id] == null}">
+                <form th:action="@{/user/review/save}" method="post">
+                    <input type="hidden" name="serviceId" th:value="${booking.service.id}" />
+                    <label>Rating:</label>
+                    <select name="rating" required>
+                        <option value="5">★★★★★</option>
+                        <option value="4">★★★★</option>
+                        <option value="3">★★★</option>
+                        <option value="2">★★</option>
+                        <option value="1">★</option>
+                    </select>
+                    <textarea name="comment" placeholder="Write your review..." required></textarea>
+                    <button type="submit" class="btn">Submit Review</button>
+                </form>
+            </div>
+
+            <hr/>
+        </div>
+
+        <!-- Cancelled Bookings -->
+        <h1>Cancelled Bookings</h1>
+        <div th:if="${#lists.isEmpty(cancelledBookings)}">
+            <p>No cancelled bookings.</p>
+        </div>
+
+        <div class="cancelled-grid">
+            <div th:each="booking : ${cancelledBookings}" class="cancelled-card">
+                <h3 th:text="${booking.service.title}"></h3>
+                <p th:text="${booking.service.description}"></p>
+                <p><b>Booked On:</b> <span th:text="${booking.bookingDate}"></span></p>
+                <p><b>Status:</b> <span style="color: red;">Cancelled</span></p>
+                <p><b>Cancelled On:</b> <span th:text="${booking.cancellationDate}"></span></p>
+                <p><b>Reason:</b> <span th:text="${booking.cancellationReason}"></span></p>
+                <p><b>Refund Amount:</b> ₹<span th:text="${booking.refundAmount}"></span></p>
+
+                <form th:action="@{/download-invoice}" method="get">
+                    <input type="hidden" name="bookingId" th:value="${booking.id}" />
+                    <button type="submit" class="btn">Download Invoice</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" th:replace="fragments/footer :: footer"></footer>
+</div>
+</body>
+</html>

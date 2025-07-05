@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Status Update</title>
+    <style>
+        /* Inline styles are preferred in emails but this is fine for simple templates */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            color: #333;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        strong {
+            color: #27ae60; /* greenish */
+        }
+    </style>
+</head>
+<body>
+  <header style="display: flex; align-items: center; padding: 10px;">
+    <img src="cid:logo" alt="HomeEase Logo" style="height: 50px; margin-right: 10px;">
+    <h2 style="margin: 0;">HomeEase</h2>
+  </header>
+
+  <h2>Hi <span th:text="${name}">Customer</span>,</h2>
+  <p>Your booking with ID <b th:text="${bookingId}">123</b> has been updated.</p>
+
+  <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+    <tr>
+      <td style="padding: 8px; font-weight: bold;">Service:</td>
+      <td style="padding: 8px;"><span th:text="${serviceTitle}">Cleaning</span></td>
+    </tr>
+    <tr>
+      <td style="padding: 8px; font-weight: bold;">Amount:</td>
+      <td style="padding: 8px;">₹<span th:text="${totalAmount}">999</span></td>
+    </tr>
+    <tr>
+      <td style="padding: 8px; font-weight: bold;">Booking Date & Time:</td>
+      <td style="padding: 8px;"><span th:text="${bookingDateTime}">2025-06-08 12:00</span></td>
+    </tr>
+    <tr>
+      <td style="padding: 8px; font-weight: bold;">Current Status:</td>
+      <td style="padding: 8px;">
+        <span th:text="${status}" style="color: green;">Confirmed</span>
+      </td>
+    </tr>
+  </table>
+
+  <p style="margin-top: 20px;">
+    Thank you for choosing <strong>HomeEase</strong>!<br>
+    We're here to make your home smarter and easier.
+  </p>
+</body>
+
+
+</html>

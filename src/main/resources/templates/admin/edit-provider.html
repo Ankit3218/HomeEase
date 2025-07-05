@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/css/admin-edit-provider.css">
+
+</head>
+<body>
+<form th:action="@{'/admin/providers/' + ${provider.id} + '/update'}" method="post">
+    <label>Select Services:</label><br/>
+    <div th:each="service : ${allServices}">
+        <input type="checkbox" name="serviceIds"
+               th:value="${service.id}"
+               th:checked="${provider.assignedServices.contains(service)}"/>
+        <span th:text="${service.title}"></span><br/>
+    </div>
+    <button type="submit">Update</button>
+</form>
+
+</body>
+</html>

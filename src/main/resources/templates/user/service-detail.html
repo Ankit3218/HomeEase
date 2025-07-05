@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Service Details</title>
+    <link rel="stylesheet" type="text/css" href="/css/service-detail.css" />
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+<header style="display: flex; align-items: center; padding: 10px;">
+    <img src="/images/logo.png" alt="HomeEase Logo" style="height: 50px; margin-right: 10px;">
+    <h2 style="margin: 0;">HomeEase</h2>
+</header>
+
+<h1 th:text="${service.title}">Service Title</h1>
+<p th:text="${service.description}">Service Description</p>
+
+<p>
+    Original Price: ₹<span th:text="${service.price}">0</span><br>
+    <span th:if="${finalPrice != null}">
+        Discounted Price: ₹<span th:text="${finalPrice}"></span><br>
+    </span>
+</p>
+
+<!-- Coupon Form -->
+<form th:action="@{/book}" method="post">
+    <input type="hidden" name="serviceId" th:value="${service.id}" />
+    <label>Coupon Code:</label>
+    <input type="text" class="expandable-input" name="couponCode" th:value="${couponCode}" />
+    <button type="submit">Apply Coupon</button>
+    <div class="success-message" th:if="${couponSuccess}" th:text="${couponSuccess}"></div>
+    <div class="error-message" th:if="${couponError}" th:text="${couponError}"></div>
+</form>
+
+<hr>
+
+<h3>Booking Form</h3>
+<form id="bookingForm" method="post" th:object="${booking}" th:action="@{/book/confirm}">
+    <input type="hidden" name="serviceId" th:value="${service.id}" />
+    <input type="hidden" name="finalPrice" th:value="${finalPrice}" />
+    <input type="hidden" name="couponCode" th:value="${couponCode}" />
+
+    <label>Name:</label>
+    <input type="text" class="expandable-input" th:field="*{customerName}" id="customerName" required />
+
+    <label>Contact:</label>
+    <input type="text" class="expandable-input" th:field="*{contact}" id="contact" required />
+
+    <label>Address:</label>
+    <textarea class="expandable-input" th:field="*{address}" required></textarea>
+
+    <label>Payment Mode:</label>
+    <select class="expandable-input" th:field="*{paymentMode}" name="paymentMode" id="paymentMode">
+        <option value="COD">Cash on Delivery</option>
+        <option value="UPI">UPI</option>
+        <option value="Card">Card</option>
+        <option value="Razorpay">Razorpay</option>
+    </select>
+
+    <!-- UPI Fields -->
+    <div id="upiFields" style="display: none; margin-top: 10px;">
+        <label>Enter UPI ID:</label>
+        <input type="text" class="expandable-input" name="upiId" placeholder="example@upi" />
+    </div>
+
+    <!-- Card Fields -->
+    <div id="cardFields" style="display: none; margin-top: 10px;">
+        <label>Card Holder Name:</label>
+        <input type="text" class="expandable-input" name="cardHolderName" />
+
+        <label>Card Number:</label>
+        <input type="text" class="expandable-input" name="cardNumber" maxlength="16" />
+
+        <label>Expiry Date:</label>
+        <input type="text" class="expandable-input" name="expiry" placeholder="MM/YY" />
+
+        <label>CVV:</label>
+        <input type="password" class="expandable-input" name="cvv" maxlength="3" />
+    </div>
+
+    <!-- Razorpay Button -->
+    <div id="razorpayBtn" style="display: none; margin-top: 10px;">
+        <button type="button" onclick="openRazorpay()">Pay with Razorpay</button>
+    </div>
+
+    <!-- Submit for others -->
+    <div id="submitBtn" style="margin-top: 10px;">
+        <button type="submit">Confirm Booking</button>
+    </div>
+</form>
+
+<script>
+    const paymentModeSelect = document.getElementById("paymentMode");
+    const upiFields = document.getElementById("upiFields");
+    const cardFields = document.getElementById("cardFields");
+    const razorpayBtn = document.getElementById("razorpayBtn");
+    const submitBtn = document.getElementById("submitBtn");
+
+    function toggleFields() {
+        const mode = paymentModeSelect.value;
+        upiFields.style.display = (mode === "UPI") ? "block" : "none";
+        cardFields.style.display = (mode === "Card") ? "block" : "none";
+        razorpayBtn.style.display = (mode === "Razorpay") ? "block" : "none";
+        submitBtn.style.display = (mode === "Razorpay") ? "none" : "block";
+    }
+
+    paymentModeSelect.addEventListener("change", toggleFields);
+    window.addEventListener("DOMContentLoaded", toggleFields);
+
+    function openRazorpay() {
+        const amount = parseFloat(document.querySelector('input[name="finalPrice"]').value || 0) * 100;
+
+        const options = {
+            "key": "rzp_test_c0hU261YbDuwY4",
+            "amount": amount,
+            "currency": "INR",
+            "name": "HomeEase",
+            "description": "Service Booking Payment",
+            "image": "/images/logo.png",
+            "handler": function (response) {
+                const form = document.getElementById("bookingForm");
+
+                const hiddenInput = document.createElement("input");
+                hiddenInput.type = "hidden";
+                hiddenInput.name = "paymentId";
+                hiddenInput.value = response.razorpay_payment_id;
+                form.appendChild(hiddenInput);
+
+                const paymentModeInput = document.createElement("input");
+                paymentModeInput.type = "hidden";
+                paymentModeInput.name = "paymentMode";
+                paymentModeInput.value = "Razorpay";
+                form.appendChild(paymentModeInput);
+
+                form.action = "/book/confirm";
+                form.method = "post";
+                form.submit();
+            },
+            "prefill": {
+                "name": document.getElementById("customerName").value,
+                "contact": document.getElementById("contact").value,
+                "email": "test@example.com"
+            },
+            "theme": {
+                "color": "#3399cc"
+            },
+            "modal": {
+                "ondismiss": function () {
+                    alert("Payment was cancelled.");
+                }
+            }
+        };
+
+        const rzp = new Razorpay(options);
+        rzp.open();
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Your Cart</title>
+</head>
+<body>
+
+<header style="display: flex; align-items: center; padding: 10px;">
+    <img src="/images/logo.png" alt="HomeEase Logo" style="height: 50px; margin-right: 10px;">
+    <h2 style="margin: 0;">HomeEase</h2>
+</header>
+
+    <h2>Your Cart</h2>
+
+    <div th:if="${#lists.isEmpty(cart)}">
+        <p>Your cart is empty.</p>
+    </div>
+
+    <div th:unless="${#lists.isEmpty(cart)}">
+        <table border="1">
+            <tr>
+                <th>Service</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+            <tr th:each="item : ${cart.values()}">
+                <td th:text="${item.service.title}"></td>
+                <td th:text="${item.service.price}"></td>
+                <td th:text="${item.quantity}"></td>
+                <td th:text="${item.totalPrice}"></td>
+            </tr>
+        </table>
+
+        <h3>Total: ₹<span th:text="${total}"></span></h3>
+
+        <a href="/checkout"><button>Proceed to Checkout</button></a>
+        <a href="/clear-cart"><button>Clear Cart</button></a>
+        <a href="/"><button>Continue Shopping</button></a>
+    </div>
+</body>
+</html>

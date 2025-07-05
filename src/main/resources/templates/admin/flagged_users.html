@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Flagged Users</title>
+    <link rel="stylesheet" href="/css/flaggedUsers.css">
+</head>
+<body>
+
+<header class="header">
+    <img src="/images/logo.png" alt="HomeEase Logo" />
+    <h2>HomeEase Admin</h2>
+</header>
+
+<div class="container">
+    <h2>🚩 Flagged Users</h2>
+    <a href="/admin" class="back-link">← Back to Dashboard</a>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Flag ID</th>
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Comment</th>
+                    <th>Flagged At</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="flag : ${flaggedUsers}">
+                    <td th:text="${flag.id}"></td>
+                    <td th:text="${flag.user.id}"></td>
+                    <td th:text="${flag.user.name}"></td>
+                    <td th:text="${flag.user.email}"></td>
+                    <td th:text="${flag.comment}"></td>
+                    <td th:text="${#temporals.format(flag.flaggedAt, 'dd-MM-yyyy HH:mm')}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

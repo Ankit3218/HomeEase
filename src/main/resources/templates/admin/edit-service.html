@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Service</title>
+    <link rel="stylesheet" type="text/css" href="/css/edit-service.css" />
+</head>
+<body>
+
+<header class="app-header">
+    <img src="/images/logo.png" alt="HomeEase Logo">
+    <h2>HomeEase</h2>
+</header>
+
+<main class="container">
+    <h2>Edit Service</h2>
+
+    <form th:action="@{/admin/services/update}" th:object="${service}" method="post" class="form-box">
+        <input type="hidden" th:field="*{id}" />
+
+        <label>Title</label>
+        <input type="text" th:field="*{title}" required />
+
+        <label>Short Description</label>
+        <input type="text" th:field="*{description}" required />
+
+        <label>Detailed Description</label>
+        <textarea th:field="*{detailedDescription}" rows="5" placeholder="Enter full service details here..." required></textarea>
+
+        <label>Price (₹)</label>
+        <input type="number" th:field="*{price}" required />
+
+        <label>Image File Name (Ex: ac.jpg)</label>
+        <input type="text" th:field="*{imageUrl}" required />
+
+        <button type="submit" class="btn">Update Service</button>
+    </form>
+</main>
+
+</body>
+</html>

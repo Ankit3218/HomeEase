@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Our Services</title>
+    <link rel="stylesheet" type="text/css" href="/css/servicelist.css" />
+</head>
+<body>
+<header>
+    <img src="/images/logo.png" alt="HomeEase Logo">
+    <h2>HomeEase</h2>
+</header>
+
+<h2>Available Services</h2>
+
+<div class="services-container">
+    <div th:each="service : ${services}" class="service-card">
+        <h3 th:text="${service.title}">Service Title</h3>
+        <p th:text="${service.description}">Short description</p>
+        <p class="price">Price: ₹<span th:text="${service.price}">0</span></p>
+
+        <img th:src="@{/images/{img}(img=${service.imageUrl})}" alt="Service Image" class="service-image"/>
+
+        <button type="button" class="see-more-btn" onclick="toggleDescription(this)">See More</button>
+        <div class="detailed-description">
+            <p th:text="${service.detailedDescription}">Full details here...</p>
+        </div>
+
+        <p class="rating">
+            ⭐ Rating:
+            <span th:text="${avgRatings[service.id]} + ' / 5.0'"></span>
+            (<span th:text="${reviewCounts[service.id]}"></span> reviews)
+        </p>
+
+        <!-- ✅ Do NOT change this logic -->
+        <form th:action="@{/cart/add}" method="post">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <input type="hidden" name="serviceId" th:value="${service.id}" />
+            <a th:href="@{/services/{id}(id=${service.id})}">
+                <button type="button" class="select-btn">Select Service</button>
+            </a>
+        </form>
+    </div>
+</div>
+
+<script>
+    function toggleDescription(button) {
+        const desc = button.nextElementSibling;
+        const isVisible = desc.style.display === "block";
+        desc.style.display = isVisible ? "none" : "block";
+        button.textContent = isVisible ? "See More" : "See Less";
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+@charset "UTF-8";
+/* Reset default styles for all elements */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body styling for centered, clean layout */
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+    padding: 40px 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header styling with logo and title */
+header {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    margin-bottom: 30px;
+    width: 100%;
+    justify-content: center;
+}
+
+header img {
+    height: 50px;
+    margin-right: 15px;
+}
+
+header h2 {
+    font-size: 2rem;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+/* Main heading styling */
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    text-align: center;
+}
+
+/* Paragraph styles */
+p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* Signature styling */
+p:last-child {
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    body {
+        padding: 30px 10px;
+    }
+
+    header h2 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}

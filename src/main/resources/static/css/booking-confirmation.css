@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #cfd9df, #e2ebf0);
+    color: #333;
+}
+
+.page-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    padding: 16px 24px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+.header img {
+    height: 48px;
+    margin-right: 12px;
+}
+
+.header h2 {
+    font-size: 22px;
+    color: #2c3e50;
+}
+
+/* Main card */
+.confirmation-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    max-width: 500px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    text-align: center;
+}
+
+.confirmation-box h2 {
+    font-size: 26px;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.confirmation-box p {
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.amount {
+    font-weight: bold;
+    color: #222;
+}
+
+/* Buttons */
+.buttons {
+    margin-top: 25px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.buttons a {
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 15px;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.home-btn {
+    background: linear-gradient(to right, #007bff, #00bcd4);
+}
+
+.home-btn:hover {
+    background: linear-gradient(to right, #0056b3, #0097a7);
+}
+
+.bookings-btn {
+    background: linear-gradient(to right, #2ecc71, #27ae60);
+}
+
+.bookings-btn:hover {
+    background: linear-gradient(to right, #229954, #1e8449);
+}
+
+/* Footer */
+.footer {
+    background: #f8f9fa;
+    padding: 16px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    margin-top: auto;
+}

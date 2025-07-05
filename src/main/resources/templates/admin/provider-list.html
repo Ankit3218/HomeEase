@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Service Providers</title>
+    <link rel="stylesheet" href="/css/admin-provider-list.css">
+</head>
+<body>
+
+    <h2>Service Providers</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Assigned Services</th>
+                <th>Edit</th>
+                <th>View Bookings</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="provider : ${providers}">
+                <td th:text="${provider.name}"></td>
+                <td th:text="${provider.email}"></td>
+                <td>
+                    <ul>
+                        <li th:each="s : ${provider.assignedServices}" th:text="${s.title}"></li>
+                    </ul>
+                </td>
+                <td>
+                    <div class="action edit">
+                        <a th:href="@{'/admin/providers/' + ${provider.id} + '/edit'}">✏️ Edit</a>
+                    </div>
+                </td>
+                <td>
+                    <div class="action bookings">
+                        <a th:href="@{'/admin/providers/' + ${provider.id} + '/bookings'}">📄 View Bookings</a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

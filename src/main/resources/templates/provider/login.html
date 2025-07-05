@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Provider Login</title>
+    <link rel="stylesheet" href="/css/provider-login.css">
+</head>
+<body>
+
+    <form th:action="@{/provider/login}" method="post">
+        <h2>Login as Service Provider</h2>
+
+        <!-- ✅ Flash Message -->
+        <p th:if="${successMessage}" class="success-message" th:text="${successMessage}"></p>
+        <p th:if="${errorMessage}" class="error-message" th:text="${errorMessage}"></p>
+
+        <label>Email:</label>
+        <input type="email" name="email" required />
+
+        <label>Password:</label>
+        <input type="password" name="password" required />
+
+        <button type="submit">Login</button>
+        <p style="font-size: 12px; text-align: center; margin-top: 10px;">
+    By continuing, you agree to our <a href="/terms">Terms</a> and <a href="/privacy">Privacy Policy</a>.
+</p>
+        
+
+        <p style="margin-top: 10px;">
+            Not registered? <a th:href="@{/provider/register}">Register here</a>
+        </p>
+    </form>
+
+</body>
+</html>

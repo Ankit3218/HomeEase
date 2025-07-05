@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Booking Confirmation</title>
+    <link rel="stylesheet" type="text/css" href="/css/booking-confirmation.css" />
+</head>
+<body>
+<div class="page-container">
+    <header class="header">
+        <img src="/images/logo.png" alt="HomeEase Logo">
+        <h2>HomeEase</h2>
+    </header>
+
+    <main class="confirmation-box">
+        <h2>🎉 Thank You!</h2>
+        <p th:text="${message}">Booking confirmed!</p>
+        <p class="amount">Paid Amount: ₹<span th:text="${amount}">999.0</span></p>
+
+        <div class="buttons">
+            <a href="/" class="home-btn">🏠 Back to Home</a>
+            <a href="/user/bookings" class="bookings-btn">📄 My Bookings</a>
+        </div>
+    </main>
+
+    <footer class="footer" th:replace="fragments/footer :: footer"></footer>
+</div>
+</body>
+</html>

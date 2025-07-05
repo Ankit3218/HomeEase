@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bookings By Provider - HomeEase Admin</title>
+    <link rel="stylesheet" href="/css/admin-provider-bookings.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>📋 Bookings By Provider</h2>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Service</th>
+                    <th>Provider Status</th>
+                    <th>Admin Status</th>
+                    <th>Finalize</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="b : ${bookings}">
+                    <td th:text="${b.user.name}">User Name</td>
+                    <td th:text="${b.service.title}">Service Title</td>
+                    <td th:text="${b.providerStatus} ?: 'None'">Pending</td>
+                    <td th:text="${b.adminStatus}">In Progress</td>
+                    <td>
+                        <form th:action="@{'/admin/bookings/' + ${b.id} + '/status'}" method="post">
+                            <input type="text" name="adminStatus" placeholder="Update Status" />
+                            <button type="submit">Update</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

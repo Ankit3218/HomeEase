@@ -1,0 +1,20 @@
+<!-- templates/user/cancel-booking.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cancel Booking</title>
+    <link rel="stylesheet" type="text/css" href="/css/cancel-booking.css" />
+</head>
+<body>
+    <h2>Cancel Booking</h2>
+
+ <form th:action="@{/user/bookings/cancel/{bookingId}(bookingId=${booking.id})}" method="post">
+    <label>Reason for cancellation:</label><br>
+    <textarea name="reason" required></textarea><br><br>
+    <button type="submit">Confirm Cancellation</button>
+</form>
+
+
+
+</body>
+</html>

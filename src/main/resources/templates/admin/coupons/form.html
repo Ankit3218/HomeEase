@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${coupon.id == 0} ? 'Add Coupon' : 'Edit Coupon'">Coupon Form</title>
+  <link rel="stylesheet" href="/css/couponForm.css">
+</head>
+<body>
+
+  <div class="form-container">
+    <h2 th:text="${coupon.id == 0} ? 'Add New Coupon' : 'Edit Coupon'"></h2>
+
+    <form th:action="@{/admin/coupons/save}" method="post" th:object="${coupon}">
+      <input type="hidden" th:field="*{id}" />
+
+      <label>Code</label>
+      <input type="text" th:field="*{code}" required />
+
+      <label>Discount (%)</label>
+      <input type="number" th:field="*{discount}" required />
+
+      <label>
+        <input type="checkbox" th:field="*{active}" />
+        Active
+      </label>
+
+      <label>Expiry Date</label>
+      <input type="date" th:field="*{expiryDate}" required />
+
+      <button type="submit">💾 Save Coupon</button>
+    </form>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+@charset "UTF-8";
+/* Reset default styles for all elements */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body styling for a clean, centered layout */
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+    padding: 40px;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Header styling with logo and title */
+header {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+}
+
+header img {
+    height: 50px;
+    margin-right: 15px;
+}
+
+header h2 {
+    font-size: 2rem;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+/* Main heading style */
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* Paragraph styles for content */
+p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+/* Highlighted text in bold */
+b {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* Signature or closing note styling */
+.signature {
+    margin-top: 30px;
+    font-style: italic;
+    color: #555;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    header img {
+        margin-bottom: 10px;
+    }
+
+    header h2 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}

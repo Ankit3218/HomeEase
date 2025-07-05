@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Track Booking - HomeEase</title>
+    <link rel="stylesheet" type="text/css" href="/css/track_booking.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <h2>Track Your Booking</h2>
+
+    <div th:if="${errorMessage}" class="error">
+        <p th:text="${errorMessage}"></p>
+    </div>
+
+    <div th:if="${booking}" class="booking-card">
+        <p><strong>Booking ID:</strong> <span th:text="${booking.id}"></span></p>
+        <p><strong>Service:</strong> <span th:text="${booking.service.title}"></span></p>
+        <p><strong>Status:</strong> <span th:text="${booking.status}"></span></p>
+        <p><strong>Booking Date & Time:</strong> <span th:text="${booking.bookingDate}"></span></p>
+        <p><strong>Total Amount:</strong> ₹<span th:text="${booking.totalAmount}"></span></p>
+    </div>
+
+    <a th:href="@{/user/bookings}" class="back-button">← Back to My Bookings</a>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+@charset "UTF-8";
+/* Animated background */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(-45deg, #f7c59f, #91c7b1, #f4a698, #6fa3ef);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    color: #fff;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Header */
+header {
+    width: 100%;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+header img {
+    height: 50px;
+    margin-right: 15px;
+}
+
+header h2 {
+    font-size: 24px;
+    margin: 0;
+    color: #fff;
+}
+
+/* Title */
+h1 {
+    margin-top: 40px;
+    font-size: 36px;
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 18px;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #f9f9f9;
+}
+
+/* Card Container */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Individual Cards */
+.login-card {
+    width: 280px;
+    padding: 30px;
+    border-radius: 16px;
+    text-align: center;
+    color: #fff;
+    font-weight: 500;
+    animation: cardPulse 4s infinite alternate;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.login-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Card-specific colors */
+.user-card {
+    background: linear-gradient(135deg, #00b4db, #0083b0);
+    animation-delay: 0s;
+}
+
+.admin-card {
+    background: linear-gradient(135deg, #ff6a00, #ee0979);
+    animation-delay: 0.5s;
+}
+
+.provider-card {
+    background: linear-gradient(135deg, #43cea2, #185a9d);
+    animation-delay: 1s;
+}
+
+@keyframes cardPulse {
+    from { filter: brightness(1); }
+    to { filter: brightness(1.1); }
+}
+
+/* Buttons */
+.login-card button {
+    padding: 10px 20px;
+    margin-top: 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-card button:hover {
+    background-color: #ffffff;
+}
+
+/* Links inside card */
+.login-card a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Terms & Privacy */
+.terms {
+    font-size: 12px;
+    text-align: center;
+    margin: 30px 20px;
+    color: #fff;
+}
+
+.terms a {
+    color: #fff;
+    text-decoration: underline;
+}

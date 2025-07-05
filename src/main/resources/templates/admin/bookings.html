@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Bookings - HomeEase</title>
+    <link rel="stylesheet" type="text/css" href="/css/bookings.css" />
+</head>
+<body>
+
+<header>
+    <img src="/images/logo.png" alt="HomeEase Logo">
+    <h2>HomeEase</h2>
+</header>
+
+<h2>All Service Bookings</h2>
+<a href="/admin/services" class="back-link">← Back to Services</a>
+
+<!-- Search -->
+<form method="get" action="/admin/bookings" class="search-form">
+    <input type="text" name="email" placeholder="Search by Email" th:value="${email}" />
+    <input type="number" name="orderId" placeholder="Search by Booking ID" th:value="${orderId}" />
+    <button type="submit">Search</button>
+</form>
+
+<!-- Booking List -->
+<div th:if="${#lists.isEmpty(bookings)}" class="no-data">
+    <p>No bookings found.</p>
+</div>
+
+<div th:each="booking : ${bookings}" class="booking-card">
+    <form th:action="@{/admin/bookings/updateStatus}" method="post">
+        <input type="hidden" name="id" th:value="${booking.id}" />
+
+        <label>ID:</label>
+        <input type="text" th:value="${booking.id}" readonly />
+
+        <label>Customer Name:</label>
+        <input type="text" th:value="${booking.customerName}" readonly />
+
+        <label>Contact:</label>
+        <input type="text" th:value="${booking.contact}" readonly />
+
+        <label>Address:</label>
+        <input type="text" th:value="${booking.address}" readonly />
+
+        <label>Booking Date:</label>
+        <input type="text" 
+               th:value="${booking.bookingDate != null} ? ${#temporals.format(booking.bookingDate, 'yyyy-MM-dd HH:mm')} : ''" 
+               readonly />
+
+        <label>Service:</label>
+        <input type="text" th:value="${booking.service.title}" readonly />
+
+        <label>Status:</label>
+        <select name="status">
+            <option th:value="'Pending'" th:selected="${booking.status == 'Pending'}">Pending</option>
+            <option th:value="'Confirmed'" th:selected="${booking.status == 'Confirmed'}">Confirmed</option>
+            <option th:value="'In Progress'" th:selected="${booking.status == 'In Progress'}">In Progress</option>
+            <option th:value="'Completed'" th:selected="${booking.status == 'Completed'}">Completed</option>
+            <option th:value="'Cancelled'" th:selected="${booking.status == 'Cancelled'}">Cancelled</option>
+            <option th:value="'Refund Completed'" th:selected="${booking.status == 'Refund Completed'}">Refund Completed</option>
+        </select>
+
+        <button type="submit">Update Status</button>
+        <hr />
+    </form>
+</div>
+
+<!-- Pagination -->
+<div th:if="${totalPages > 1}" class="pagination">
+    <span th:if="${currentPage > 0}">
+        <a th:href="@{/admin/bookings(page=${currentPage - 1}, email=${email}, orderId=${orderId})}">Previous</a>
+    </span>
+
+    <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+        <a th:href="@{/admin/bookings(page=${i}, email=${email}, orderId=${orderId})}"
+           th:text="${i + 1}"
+           th:classappend="${i == currentPage} ? 'active-page' : ''"></a>
+    </span>
+
+    <span th:if="${currentPage < totalPages - 1}">
+        <a th:href="@{/admin/bookings(page=${currentPage + 1}, email=${email}, orderId=${orderId})}">Next</a>
+    </span>
+</div>
+
+</body>
+</html>

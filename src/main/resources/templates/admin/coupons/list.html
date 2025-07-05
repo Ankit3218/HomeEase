@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Coupons HomeEase</title>
+ <link rel="stylesheet" type="text/css" href="/css/couponList.css" />
+</head>
+<body>
+<h2>Manage Coupons</h2>
+<a href="/admin/coupons/add" class="add-new">Add New Coupon</a>
+<table>
+  <tr>
+    <th>ID</th><th>Code</th><th>Discount (%)</th><th>Active</th><th>Expiry</th><th>Actions</th>
+  </tr>
+  <tr th:each="coupon : ${coupons}">
+    <td th:text="${coupon.id}"></td>
+    <td th:text="${coupon.code}"></td>
+    <td th:text="${coupon.discount}"></td>
+    <td th:text="${coupon.active} ? 'Yes' : 'No'"></td>
+    <td th:text="${coupon.expiryDate}"></td>
+    <td>
+      <a th:href="@{'/admin/coupons/edit/' + ${coupon.id}}">Edit</a> |
+      <a th:href="@{'/admin/coupons/delete/' + ${coupon.id}}">Delete</a>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

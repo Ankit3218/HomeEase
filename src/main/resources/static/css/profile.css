@@ -1,0 +1,149 @@
+@charset "UTF-8";
+
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* Base styles */
+body {
+    background: linear-gradient(to right, #f0f4f8, #d9e2ec);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #2d3436;
+}
+
+/* Header */
+.header {
+    background-color: #1e272e;
+    color: #fff;
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-logo {
+    height: 48px;
+    margin-right: 15px;
+}
+
+.header-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Main card */
+.main-content {
+    background-color: white;
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.main-content:hover {
+    transform: translateY(-4px);
+}
+
+/* Typography */
+.welcome-heading {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #2f3640;
+}
+
+.user-email {
+    font-size: 16px;
+    margin-bottom: 30px;
+    color: #636e72;
+}
+
+/* Button styles */
+.my-bookings-btn,
+.logout-btn {
+    width: 80%;
+    margin: 10px auto;
+    display: block;
+    font-size: 16px;
+    padding: 12px 20px;
+    font-weight: 500;
+    border-radius: 8px;
+    border: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.1);
+}
+
+.my-bookings-btn {
+    background-color: #0984e3;
+    color: white;
+    box-shadow: 0 4px 12px rgba(9, 132, 227, 0.3);
+}
+
+.my-bookings-btn:hover {
+    background-color: #0077c2;
+    transform: translateY(-1px);
+}
+
+/* Add spacing between buttons */
+.my-bookings-btn + .my-bookings-btn,
+.my-bookings-btn + .logout-btn {
+    margin-top: 15px;
+}
+
+.logout-btn {
+    background-color: #d63031 !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: 0 4px 12px rgba(214, 48, 49, 0.3);
+}
+
+.logout-btn:hover {
+    background-color: #c0392b !important;
+    transform: scale(1.03);
+}
+
+/* Optional button icon */
+.button-icon {
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* Success message */
+.alert-success {
+    margin-top: 20px;
+    font-size: 15px;
+    border-radius: 6px;
+    box-shadow: 0 3px 6px rgba(76, 175, 80, 0.2);
+}
+
+.logout-btn {
+    background-color: #d63031 !important;
+    color: white !important;
+    font-size: 16px;
+    font-weight: 500;
+    border: none !important;
+    padding: 12px 20px !important;
+    width: 80%;
+    display: block;
+    margin: 20px auto 0 auto; /* Extra spacing from the top */
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(214, 48, 49, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background-color: #c0392b !important;
+    transform: translateY(-1px);
+}
+
+}

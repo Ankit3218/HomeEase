@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to HomeEase</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/welcome.css" />
+</head>
+<body>
+
+    <header>
+        <img src="/images/logo.png" alt="HomeEase Logo" />
+        <h2>HomeEase</h2>
+    </header>
+
+    <h1>Welcome to HomeEase</h1>
+    <p class="subtitle">Your trusted platform to book home services with ease!</p>
+
+    <div class="card-container">
+        <!-- User Login Card -->
+        <div class="login-card user-card">
+            <h2>User Login</h2>
+            <p>Access and manage your home service bookings.</p>
+            <a href="/login"><button>Login as User</button></a>
+            <p>New here? <a href="/register">Register</a></p>
+        </div>
+
+        <!-- Admin Login Card -->
+        <div class="login-card admin-card">
+            <h2>Admin Login</h2>
+            <p>Access and manage all home service operations.</p>
+            <a href="/login?type=admin"><button>Login as Admin</button></a>
+        </div>
+
+        <!-- Service Provider Login Card -->
+        <div class="login-card provider-card">
+            <h2>Service Provider Login</h2>
+            <p>Manage your services and view customer requests.</p>
+            <a href="/provider/login"><button>Login as Provider</button></a>
+            <p>Not registered? <a href="/provider/register">Register</a></p>
+        </div>
+    </div>
+
+    <p class="terms">
+        By continuing, you agree to our <a href="/terms">Terms</a> and <a href="/privacy">Privacy Policy</a>.
+    </p>
+
+</body>
+</html>

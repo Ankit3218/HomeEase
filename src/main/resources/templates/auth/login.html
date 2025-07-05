@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="/css/login.css" />
+</head>
+<body>
+
+<header style="display: flex; align-items: center; padding: 10px;">
+    <img src="/images/logo.png" alt="HomeEase Logo" style="height: 50px; margin-right: 10px;">
+    <h2 style="margin: 0;">HomeEase</h2>
+</header>
+
+<h2>Login</h2>
+
+<form th:action="@{/login}" method="post">
+    <!-- ✅ Preserve login type (admin/user) -->
+    <input type="hidden" name="type" th:value="${param.type}" />
+
+    <label>Email:</label>
+    <input type="text" name="username" required /><br/>
+
+    <label>Password:</label>
+    <input type="password" name="password" required /><br/>
+
+    <button type="submit">Login</button>
+
+    <!-- ✅ Show Terms only for non-admin -->
+    <p th:if="${param.type == null or param.type[0] != 'admin'}"
+       style="font-size: 12px; text-align: center; margin-top: 10px;">
+        By continuing, you agree to our <a href="/terms">Terms</a> and <a href="/privacy">Privacy Policy</a>.
+    </p>
+</form>
+
+<!-- ✅ Error / Logout Message -->
+<div th:if="${param.error}">
+    <p style="color:red; text-align: center;">Invalid username or password</p>
+</div>
+<div th:if="${param.logout}">
+    <p style="color:green; text-align: center;">You have been logged out</p>
+</div>
+
+<!-- ✅ Forgot & Register links only if not admin -->
+<div th:if="${param.type == null or param.type[0] != 'admin'}">
+    <p style="text-align: center;">
+        <a th:href="@{/forgot-password}">Forgot Password?</a>
+    </p>
+    <p style="text-align: center;">
+        Don't have an account? <a th:href="@{/register}">Register here</a>
+    </p>
+</div>
+
+</body>
+</html>

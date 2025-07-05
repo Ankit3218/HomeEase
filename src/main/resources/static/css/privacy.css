@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+/* ===== Reset & Base Styling ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fb;
+    color: #2c3e50;
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ===== Header ===== */
+header {
+    border-bottom: 2px solid #2c7be5;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+header h2 {
+    color: #2c7be5;
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+/* ===== Content Section ===== */
+main.content {
+    background-color: #ffffff;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== Headings Inside Content ===== */
+main h3 {
+    font-size: 1.4rem;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    color: #34495e;
+}
+
+/* ===== Paragraphs ===== */
+main p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+/* ===== Lists ===== */
+main ul {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+main ul li {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    list-style: disc;
+}
+
+main ul ul {
+    list-style: circle;
+    margin-left: 20px;
+}
+
+/* ===== Links ===== */
+a {
+    color: #2c7be5;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ===== Footer Info (Effective Date, Contact) ===== */
+main p:last-of-type {
+    margin-top: 25px;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    body {
+        padding: 25px 15px;
+    }
+
+    header h2 {
+        font-size: 1.5rem;
+    }
+
+    main h3 {
+        font-size: 1.2rem;
+    }
+
+    main p,
+    main ul li {
+        font-size: 0.95rem;
+    }
+}

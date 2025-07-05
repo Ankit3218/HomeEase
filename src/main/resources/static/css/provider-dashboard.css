@@ -1,0 +1,153 @@
+@charset "UTF-8";
+:root {
+    --primary-color: #4A90E2;
+    --background-color: #f4f6f8;
+    --card-bg: #ffffff;
+    --text-color: #333;
+    --border-radius: 12px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    padding: 40px;
+    color: var(--text-color);
+}
+
+h2 {
+    color: var(--primary-color);
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #357ABD;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 12px;
+}
+
+th {
+    text-align: left;
+    background-color: #eaf0f6;
+    padding: 14px;
+    font-weight: 600;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+td {
+    padding: 14px;
+    background-color: var(--card-bg);
+    border-bottom: 1px solid #ddd;
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius);
+}
+
+tr {
+    transition: transform 0.2s ease;
+}
+
+tr:hover {
+    transform: scale(1.005);
+}
+
+input[type="text"] {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    outline: none;
+    width: 180px;
+    margin-right: 8px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: var(--primary-color);
+}
+
+.update-form {
+    display: flex;
+    align-items: center;
+}
+nav {
+    background-color: var(--primary-color);
+    padding: 15px 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 30px;
+    box-shadow: var(--shadow);
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+.success-message {
+    color: green;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+@media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tr {
+        margin-bottom: 15px;
+        box-shadow: var(--shadow);
+        border-radius: var(--border-radius);
+        padding: 10px;
+        background: white;
+    }
+
+    td {
+        padding: 10px;
+        text-align: right;
+        position: relative;
+    }
+
+    td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        font-weight: bold;
+        text-align: left;
+    }
+}
+<td data-label="User" th:text="${b.user.name}">User</td>
+

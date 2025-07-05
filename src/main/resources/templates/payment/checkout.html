@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Checkout</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+    <button id="pay-btn">Pay Now</button>
+
+    <script th:inline="javascript">
+        let options = {
+            "key": [[${key}]], 
+            "amount": [[${amount}]] * 100, 
+            "currency": "INR",
+            "name": "HomeEase",
+            "description": "Smart Home Services Booking",
+            "order_id": [[${orderId}]], 
+            "handler": function (response) {
+                alert("Payment successful: " + response.razorpay_payment_id);
+                window.location.href = "/payment-success";
+            },
+            "theme": {
+                "color": "#3399cc"
+            }
+        };
+        let rzp = new Razorpay(options);
+        document.getElementById('pay-btn').onclick = function () {
+            rzp.open();
+        };
+    </script>
+</body>
+</html>

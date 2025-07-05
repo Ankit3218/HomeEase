@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register as Provider</title>
+    <link rel="stylesheet" href="/css/provider-register.css">
+</head>
+<body>
+
+    <form th:action="@{/provider/register}" th:object="${provider}" method="post">
+        <h2>Service Provider Registration</h2>
+
+        <!-- ✅ Flash Messages -->
+        <p th:if="${successMessage}" class="success-message" th:text="${successMessage}"></p>
+        <p th:if="${errorMessage}" class="error-message" th:text="${errorMessage}"></p>
+
+        <label>Name:</label>
+        <input type="text" th:field="*{name}" required />
+
+        <label>Email:</label>
+        <input type="email" th:field="*{email}" required />
+<small id="strengthMessage" style="font-size: 12px; color: gray;"></small>
+
+        <label>Password:</label>
+        <input type="password" th:field="*{password}" required id="password" />
+
+        <!-- ✅ Optional Confirm Password (frontend only) -->
+        <label>Confirm Password:</label>
+        <input type="password" id="confirmPassword" required />
+
+        <p id="passwordMismatch" style="color: red; display: none;">Passwords do not match!</p>
+
+        <label>Select Services You Offer:</label>
+        <div class="services-list" th:each="srv : ${services}">
+            <label>
+                <input type="checkbox" name="serviceIds" th:value="${srv.id}" />
+                <span th:text="${srv.title}"></span>
+            </label>
+        </div>
+
+        <button type="submit" id="submitBtn">Register</button>
+        <p style="font-size: 12px; text-align: center; margin-top: 10px;">
+    By continuing, you agree to our <a href="/terms">Terms</a> and <a href="/privacy">Privacy Policy</a>.
+</p>
+        
+        
+
+        <!-- Login Link -->
+        <p style="margin-top: 10px;">
+            Already registered? <a th:href="@{/provider/login}">Login here</a>
+        </p>
+    </form>
+
+<script>
+    // ✅ Confirm Password check
+    document.getElementById("submitBtn").addEventListener("click", function (event) {
+        const pwd = document.getElementById("password").value;
+        const confirm = document.getElementById("confirmPassword").value;
+        if (pwd !== confirm) {
+            document.getElementById("passwordMismatch").style.display = "block";
+            event.preventDefault();
+        }
+    });
+</script>
+
+<script>
+    document.getElementById("password").addEventListener("input", function () {
+        const value = this.value;
+        const message = document.getElementById("strengthMessage");
+
+        if (value.length < 6) {
+            message.textContent = "Weak password";
+            message.style.color = "red";
+        } else if (!/[A-Z]/.test(value) || !/[0-9]/.test(value)) {
+            message.textContent = "Medium (Add numbers and uppercase letters)";
+            message.style.color = "orange";
+        } else {
+            message.textContent = "Strong password";
+            message.style.color = "green";
+        }
+    });
+</script>
+
+
+</body>
+</html>

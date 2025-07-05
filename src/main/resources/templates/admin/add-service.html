@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Service</title>
+    <link rel="stylesheet" type="text/css" href="/css/add-service.css" />
+</head>
+<body>
+
+<header class="app-header">
+    <img src="/images/logo.png" alt="HomeEase Logo">
+    <h2>HomeEase</h2>
+</header>
+
+<main class="container">
+    <h2>Add New Service</h2>
+
+    <form th:action="@{/admin/services/add}" th:object="${service}" method="post" class="form-box">
+        <label>Title</label>
+        <input type="text" th:field="*{title}" required />
+
+        <label>Short Description</label>
+        <input type="text" th:field="*{description}" required />
+
+        <label>Price (₹)</label>
+        <input type="number" th:field="*{price}" required />
+
+        <label>Image File Name (Ex: plumber.jpg)</label>
+        <input type="text" th:field="*{imageUrl}" placeholder="e.g., service.jpg" />
+
+        <label>Detailed Description</label>
+        <textarea th:field="*{detailedDescription}" rows="5" placeholder="Write full details about the service..."></textarea>
+
+        <button type="submit" class="btn">Save Service</button>
+    </form>
+</main>
+
+</body>
+</html>

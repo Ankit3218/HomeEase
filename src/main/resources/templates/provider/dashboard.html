@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Provider Dashboard</title>
+    <link rel="stylesheet" href="/css/provider-dashboard.css">
+</head>
+<body>
+
+    <h2>My Bookings</h2>
+
+    <form th:action="@{/provider/logout}" method="post" style="margin-bottom: 20px;">
+        <button type="submit">Logout</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Service</th>
+                <th>Status</th>
+                <th>Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="b : ${bookings}">
+                <td th:text="${b.user.name}">User</td>
+                <td th:text="${b.service.title}">Service</td>
+                <td th:text="${b.providerStatus} ?: '—'">Status</td>
+                <td>
+                    <form th:action="@{'/provider/booking/' + ${b.id} + '/update'}" method="post" class="update-form">
+                        <input type="text" name="providerStatus" placeholder="e.g., In Progress" required />
+                        <button type="submit">Update</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

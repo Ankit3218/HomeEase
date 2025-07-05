@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Your Bookings</title>
+    <link rel="stylesheet" type="text/css" href="/css/booking.css" />
+</head>
+<body>
+<div class="page-container">
+
+    <header class="header">
+        <img src="/images/logo.png" alt="HomeEase Logo">
+        <h2>HomeEase</h2>
+    </header>
+
+    <main class="content">
+        <h2>Your Selected Services</h2>
+
+        <div th:if="${#lists.isEmpty(cart)}" class="empty-cart">
+            <p>No services booked yet.</p>
+        </div>
+
+        <div th:each="service : ${cart}" class="service-card">
+            <h3 th:text="${service.title}">Service Title</h3>
+            <p th:text="${service.description}">Description</p>
+            <p class="price">Price: ₹<span th:text="${service.price}">0</span></p>
+            <img th:src="@{${service.imageUrl}}" alt="Service Image" class="service-image"/>
+        </div>
+
+        <div class="action">
+            <a href="/services" class="btn-add-more">➕ Add More Services</a>
+        </div>
+    </main>
+
+    <footer class="footer" th:replace="fragments/footer :: footer"></footer>
+</div>
+</body>
+</html>

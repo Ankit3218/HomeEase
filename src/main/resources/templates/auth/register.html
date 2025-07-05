@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="/css/register.css" />
+    <script>
+        // Password Strength Checker
+        function checkStrength() {
+            const password = document.getElementById("password").value;
+            const strength = document.getElementById("strength");
+            const strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&]).{8,}$");
+
+            if (strongRegex.test(password)) {
+                strength.innerHTML = "Strong password ✅";
+                strength.style.color = "green";
+            } else {
+                strength.innerHTML = "Weak password ❌";
+                strength.style.color = "red";
+            }
+        }
+
+        // Confirm Password Checker
+        function checkMatch() {
+            const password = document.getElementById("password").value;
+            const confirm = document.getElementById("confirmPassword").value;
+            const match = document.getElementById("match");
+
+            if (password === confirm) {
+                match.innerHTML = "Passwords match ✅";
+                match.style.color = "green";
+            } else {
+                match.innerHTML = "Passwords do not match ❌";
+                match.style.color = "red";
+            }
+        }
+    </script>
+</head>
+<body>
+<header style="display: flex; align-items: center; padding: 10px;">
+    <img src="/images/logo.png" alt="HomeEase Logo" style="height: 50px; margin-right: 10px;">
+    <h2 style="margin: 0;">HomeEase</h2>
+</header>
+
+<h2>Register</h2>
+
+<div th:if="${session.success}" style="color:green;" th:text="${session.success}"></div>
+<div th:if="${session.error}" style="color:red;" th:text="${session.error}"></div>
+
+<form th:action="@{/register}" th:object="${user}" method="post">
+    <label>Name:</label>
+    <input type="text" th:field="*{name}" required /><br/>
+
+    <label>Email:</label>
+    <input type="email" th:field="*{email}" required /><br/>
+
+    <label>Password:</label>
+    <input type="password" id="password" th:field="*{password}" onkeyup="checkStrength();checkMatch();" required
+           pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&]).{8,15}$"
+           title="Must contain 8–15 characters, including uppercase, lowercase, number, and special character." />
+    <span id="strength" style="font-size: 13px;"></span><br/>
+
+    <label>Confirm Password:</label>
+    <input type="password" id="confirmPassword" onkeyup="checkMatch();" required />
+    <span id="match" style="font-size: 13px;"></span><br/>
+
+    <button type="submit">Register</button>
+
+    <p style="font-size: 12px; text-align: center; margin-top: 10px;">
+        By continuing, you agree to our <a href="/terms">Terms</a> and <a href="/privacy">Privacy Policy</a>.
+    </p>
+
+    <p style="text-align: center;">Already registered? <a th:href="@{/login}">Login here</a></p>
+</form>
+</body>
+</html>

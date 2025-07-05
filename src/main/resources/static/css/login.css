@@ -1,0 +1,155 @@
+/* === Background Animation === */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(-45deg, #ffecd2, #fcb69f, #a1c4fd, #c2e9fb);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 15px;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* === Header === */
+header {
+    width: 100%;
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    color: #fff;
+}
+
+header h2 {
+    font-size: 22px;
+    margin: 0;
+}
+
+/* === Heading === */
+h2 {
+    margin: 30px 0 20px 0;
+    color: #333;
+    font-size: 28px;
+    text-align: center;
+}
+
+/* === Form Box === */
+form {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 35px 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 420px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* === Labels & Inputs === */
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 14px;
+    background-color: #fff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.2);
+    outline: none;
+}
+
+/* === Submit Button === */
+button[type="submit"] {
+    margin-top: 25px;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* === Flash Messages === */
+div[th\\:if] {
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+div[th\\:if] p {
+    margin: 0;
+    padding: 8px 10px;
+    border-radius: 8px;
+}
+
+div[th\\:if].error p {
+    background-color: #ffe0e0;
+    color: #c00;
+}
+
+div[th\\:if].logout p {
+    background-color: #e0ffe0;
+    color: #0a0;
+}
+
+/* === Footer Links === */
+form p {
+    font-size: 13px;
+    text-align: center;
+    margin-top: 15px;
+    color: #333;
+}
+
+form a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+form a:hover {
+    text-decoration: underline;
+}
+
+/* Extra links below form */
+body > p {
+    font-size: 13px;
+    margin-top: 8px;
+    color: #333;
+}
