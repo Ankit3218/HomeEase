@@ -43,7 +43,10 @@ It enables users to book home services like plumbing, cleaning, and electrical w
 - Notify admin upon completion or issue
 
 # 🛠️ Admin
-- Predefined login (`admin@homeease.com`, password: `admin123`)
+This project includes a predefined admin account.
+🛡️ For security reasons, the admin email and password are not shared publicly.
+📩 Please contact the project admin to gain access to the admin panel.
+
 - View dashboard: total users, services, bookings, and revenue
 - View booking stats by status (confirmed, pending, cancelled, refund)
 - Manage users (activate, deactivate, view)
@@ -75,39 +78,35 @@ It enables users to book home services like plumbing, cleaning, and electrical w
 
 HomeEase/
 ├── src/
-│ └── main/
-│ ├── java/com/homeease/
-│ │ ├── config/
-│ │ ├── controller/
-│ │ ├── dto/
-│ │ ├── entity/
-│ │ ├── exception/
-│ │ ├── repository/
-│ │ ├── service/
-│ │ └── util/
-│ └── resources/
-│ ├── static/
-│ │ ├── css/
-│ │ ├── js/
-│ │ └── images/
-│ ├── templates/
-│ │ ├── admin/
-│ │ ├── auth/
-│ │ ├── booking/
-│ │ ├── payment/
-│ │ ├── provider/
-│ │ ├── service/
-│ │ └── user/
-│ ├── application.properties  Not committed
-│ ├── application-example.properties Safe version
-│ └── data.sql
+│   └── main/
+│       ├── java/com/homeease/
+│       │   ├── config/
+│       │   ├── controller/
+│       │   ├── dto/
+│       │   ├── entity/
+│       │   ├── exception/
+│       │   ├── repository/
+│       │   ├── service/
+│       │   └── util/
+│       └── resources/
+│           ├── static/
+│           │   ├── css/
+│           │   ├── js/
+│           │   └── images/
+│           └── templates/
+│               ├── admin/
+│               ├── auth/
+│               ├── booking/
+│               ├── payment/
+│               ├── provider/
+│               ├── service/
+│               └── user/
+├── application.properties         ← 🔒 *Not Committed*
+├── application-example.properties ← ✅ *Safe version*
+├── data.sql
 ├── .gitignore
 ├── README.md
-├── pom.xml
-
-
-
-
+└── pom.xml
 
 
 ---
@@ -154,78 +153,83 @@ spring.mail.properties.mail.smtp.starttls.enable=true
 
 
 
-## 📸 Screenshots  ##
+ 📸 Screenshots
 
-###🛠️ Admin Dashboard  ####
-Admin Dashboard(screenshots/admin-dashboard.png)
+ 🛠️ Admin Screens
 
-## 🧾 Admin - Manage Services 
-Admin Manage Services(screenshots/admin-manage-service.png)
+ 📊 Dashboard  
+[![Admin Dashboard](screenshots/admin-dashboard.png)](screenshots/admin-dashboard.png)
 
-### 👥 Admin - Manage Users
-Admin Manage Users(screenshots/admin-manage-user.png)
+ 🚩 Flagged Users  
+[![Flagged Users](screenshots/admin-flagged-user.png)](screenshots/admin-flagged-user.png)
 
-### 🎫 Admin - Manage Coupons
-Admin Manage Coupons(screenshots/admin-manageCoupon.png)
+ 🎫 Manage Coupons  
+[![Manage Coupons](screenshots/admin-manageCoupon.png)](screenshots/admin-manageCoupon.png)
 
-### 🚩 Admin - Flagged Users
-Flagged Users(screenshots/admin-flagged-user.png)
+ 🧾 Manage Services  
+[![Manage Services](screenshots/admin-manage-service.png)](screenshots/admin-manage-service.png)
 
-### 🔧 Admin - Provider Management
-Provider Management(screenshots/admin-providerManagement.png)
+ 👥 Manage Users  
+[![Manage Users](screenshots/admin-manage-user.png)](screenshots/admin-manage-user.png)
 
-### 📋 Admin - See Bookings
-Admin See Bookings(screenshots/admin-seeBookings.png)
+ 🔧 Provider Management  
+[![Provider Management](screenshots/admin-providerManagement.png)](screenshots/admin-providerManagement.png)
+
+ 📋 View Bookings  
+[![View Bookings](screenshots/admin-seeBookings.png)](screenshots/admin-seeBookings.png)
+
+---
+ 👨‍🔧 Provider Screens
+
+ 🧑‍💻 Dashboard  
+[![Provider Dashboard](screenshots/Provider-dashboard.png)](screenshots/Provider-dashboard.png)
+
+ 🔐 Login  
+[![Provider Login](screenshots/Provider-LoginPage.png)](screenshots/Provider-LoginPage.png)
+
+ 📝 Registration Page 1  
+[![Registration Page 1](screenshots/provider-registrationPage1.png)](screenshots/provider-registrationPage1.png)
+
+ 📝 Registration Page 2  
+[![Registration Page 2](screenshots/provider-RegistrationPage2.png)](screenshots/provider-RegistrationPage2.png)
 
 ---
 
-### 👨‍🔧 Provider Dashboard ###
-Provider Dashboard(screenshots/Provider-dashboard.png)
+ 👤 User Screens
 
-### 🔐 Provider Login
-Provider Login(screenshots/Provider-LoginPage.png)
+ 🏠 Home Page  
+[![Home Page](screenshots/Home-page.png)](screenshots/Home-page.png)
 
-### 📝 Provider Registration - Page 1
-Provider Registration Page 1(screenshots/provider-registrationPage1.png)
+ 🔐 Login Page  
+[![User Login](screenshots/user-loginPage.png)](screenshots/user-loginPage.png)
 
-### 📝 Provider Registration - Page 2
-Provider Registration Page 2(screenshots/provider-RegistrationPage2.png)
+ 📝 Registration Page  
+[![User Registration](screenshots/user-registrationPage.png)](screenshots/user-registrationPage.png)
 
+ 👋 Welcome Page  
+[![User Welcome](screenshots/user-welcomePage.png)](screenshots/user-welcomePage.png)
 
-### 👤 User Interface##
+ 📅 Booking Page 1  
+[![Booking Page 1](screenshots/user-bookingPage1.png)](screenshots/user-bookingPage1.png)
 
-### 🏠 Home Page
-Home Page(screenshots/Home-page.png)
+ 📅 Booking Page 2  
+[![Booking Page 2](screenshots/user-bookingPage2.png)](screenshots/user-bookingPage2.png)
 
-### 🔐 Login Page
-User Login(screenshots/user-loginPage.png)
+ 📍 Booking Tracking  
+[![Booking Tracking](screenshots/user-bookingTrakingPage.png)](screenshots/user-bookingTrakingPage.png)
 
-### 📝 Registration Page
-User Registration(screenshots/user-registrationPage.png)
+ ❌ Cancelled Booking  
+[![Cancelled Booking](screenshots/user-cancelledBookingPage.png)](screenshots/user-cancelledBookingPage.png)
 
-### 👋 Welcome Page
-User Welcome Page(screenshots/user-welcomePage.png)
+ 📑 All Bookings Page  
+[![All Bookings](screenshots/user-allBookingPage.png)](screenshots/user-allBookingPage.png)
 
-### 📅 Booking Page 1
-Booking Page 1(screenshots/user-bookingPage1.png)
+ 💬 Contact Us Page  
+[![Contact Us](screenshots/user-contactUsPage.png)](screenshots/user-contactUsPage.png)
 
-### 📅 Booking Page 2
-Booking Page 2(screenshots/user-bookingPage2.png)
+ 🛠️ Services Page  
+[![Services Page](screenshots/Service-Page.png)](screenshots/Service-Page.png)
 
-### 📍 Booking Tracking
-Booking Tracking(screenshots/user-bookingTrakingPage.png)
-
-### ❌ Cancelled Booking
-Cancelled Booking(screenshots/user-cancelledBookingPage.png)
-
-### 📑 All Bookings Page
-All Bookings(screenshots/user-allBookingPage.png)
-
-### 📬 Contact Us Page
-Contact Us(screenshots/user-contactUsPage.png)
-
-### 🛠️ Services Page
-Service Page(screenshots/Service-Page.png)
 
 
 
