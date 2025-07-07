@@ -152,80 +152,76 @@ spring.mail.properties.mail.smtp.starttls.enable=true
 
 
 
-
-Screenshots
-
-Admin Screens
-
 Dashboard  
-[![Admin Dashboard](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/admin-dashboard.png)](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/admin-dashboard.png)
+![Admin Dashboard](screenshots/admin-dashboard.png)
 
 Flagged Users  
-[![Flagged Users](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/admin-flagged-user.png)](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/admin-flagged-user.png)
+![Flagged Users](screenshots/admin-flagged-user.png)
 
 Manage Coupons  
-[![Manage Coupons](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/admin-manageCoupon.png)](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/admin-manageCoupon.png)
+![Manage Coupons](screenshots/admin-manageCoupon.png)
 
 Manage Services  
-[![Manage Services](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/admin-manage-service.png)](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/admin-manage-service.png)
+![Manage Services](screenshots/admin-manage-service.png)
 
 Manage Users  
-[![Manage Users](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/admin-manage-user.png)](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/admin-manage-user.png)
+![Manage Users](screenshots/admin-manage-user.png)
 
 Provider Management  
-[![Provider Management](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/admin-providerManegement.png)](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/admin-providerManegement.png)
+![Provider Management](screenshots/admin-providerManegement.png)
 
 View Bookings  
-[![View Bookings](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/admin-seeBookings.png)](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/admin-seeBookings.png)
+![View Bookings](screenshots/admin-seeBookings.png)
 
-Provider Screens
+---
 
-Dashboard  
-[![Provider Dashboard](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/Provider-dashboard.png)](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/Provider-dashboard.png)
+Provider Dashboard  
+![Provider Dashboard](screenshots/Provider-dashboard.png)
 
-Login  
-[![Provider Login](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/Provider-LoginPage.png)](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/Provider-LoginPage.png)
+Provider Login  
+![Provider Login](screenshots/Provider-LoginPage.png)
 
-Registration Page 1  
-[![Registration Page 1](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/provider-registrationPage1.png)](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/provider-registrationPage1.png)
+Provider Registration 1  
+![Provider Registration 1](screenshots/provider-registrationPage1.png)
 
-Registration Page 2  
-[![Registration Page 2](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/provider-RegistrationPage2.png)](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/provider-RegistrationPage2.png)
+Provider Registration 2  
+![Provider Registration 2](screenshots/provider-RegistrationPage2.png)
 
-User Screens
+---
 
-Home Page  
-[![Home Page](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/Home-page.png)](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/Home-page.png)
+User Home Page  
+![User Home Page](screenshots/Home-page.png)
 
-Login Page  
-[![User Login](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/user-loginPage.png)](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/user-loginPage.png)
+User Login Page  
+![User Login Page](screenshots/user-loginPage.png)
 
-Registration Page  
-[![User Registration](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/user-registrationPage.png)](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/user-registrationPage.png)
+User Registration Page  
+![User Registration Page](screenshots/user-registrationPage.png)
 
 Welcome Page  
-[![Welcome Page](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/user-welcomePage.png)](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/user-welcomePage.png)
+![Welcome Page](screenshots/user-welcomePage.png)
 
 Booking Page 1  
-[![Booking Page 1](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/User-bookingPage1.png)](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/User-bookingPage1.png)
+![Booking Page 1](screenshots/User-bookingPage1.png)
 
 Booking Page 2  
-[![Booking Page 2](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/User-bookingPage2.png)](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/User-bookingPage2.png)
+![Booking Page 2](screenshots/User-bookingPage2.png)
 
 Booking Tracking  
-[![Booking Tracking](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/user-bookingTrakingPage.png)](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/user-bookingTrakingPage.png)
+![Booking Tracking](screenshots/user-bookingTrakingPage.png)
 
 Cancelled Booking  
-[![Cancelled Booking](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/user-cancelledBookingPage.png)](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/user-cancelledBookingPage.png)
+![Cancelled Booking](screenshots/user-cancelledBookingPage.png)
 
-All Bookings Page  
-[![All Bookings](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/user-allBookingPage.png)](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/user-allBookingPage.png)
+All Bookings  
+![All Bookings](screenshots/user-allBookingPage.png)
 
 Contact Us Page  
-[![Contact Us](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/user-contactUsPage.png)](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/user-contactUsPage.png)
+![Contact Us Page](screenshots/user-contactUsPage.png)
 
 Services Page  
-[![Services Page](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/Service-Page.png)](https://raw.githubusercontent.com/Ankit3218/HomeEase/main/screenshots/Service-Page.png)
+![Services Page](screenshots/Service-Page.png)
+
 
 
 
