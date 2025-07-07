@@ -27,18 +27,16 @@ public class UserService {
     @Autowired
     private EmailService emailService;
 
-    // Register user
+    
     public User registerUser(User user) throws Exception {
-        // Check if email already exists
+        
     	
         if (userRepository.findByEmail(user.getEmail()) != null) {
             throw new Exception("Email already registered");
         }
 
-        // Encode password
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-        // Set default role
         Role userRole = roleRepository.findByName("USER");
         if (userRole == null) {
             throw new Exception("Default role USER not found in database");
@@ -56,7 +54,7 @@ public class UserService {
         
     }
 
-    // (Optional) Manual login - not needed with Spring Security
+    
     public User loginUser(String email, String password) throws Exception {
         User user = userRepository.findByEmail(email);
         if (user == null) {

@@ -48,10 +48,10 @@ public class BookingService {
 
     public void confirmBooking(Booking booking) {
         try {
-            // Save booking and get the updated entity with generated fields
+            
             Booking savedBooking = bookingRepository.save(booking);
 
-            //  email content using savedBooking data
+            
             String html = "<h2>Booking Confirmed</h2>" +
                     "<p>Hi " + savedBooking.getCustomerName() + ",</p>" +
                     "<p>Your booking for <b>" + savedBooking.getService().getTitle() + "</b> is confirmed.</p>" +
@@ -59,14 +59,14 @@ public class BookingService {
                     "Total Amount: ₹" + savedBooking.getTotalAmount() + "</p>" +
                     "<p>Thanks,<br>HomeEase Team</p>";
 
-            // Log info for debugging
+            
             logger.info("Sending booking confirmation email to: {}", savedBooking.getUser().getEmail());
 
-            // Send the confirmation email
+            
             emailService.sendHtmlEmail(savedBooking.getUser().getEmail(), "Booking Confirmation - HomeEase", html);
 
         } catch (Exception e) {
-            // Log any error during saving or email sending
+            
             logger.error("Error while confirming booking or sending email", e);
         }
     }

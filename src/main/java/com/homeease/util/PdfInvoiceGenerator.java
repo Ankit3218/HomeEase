@@ -21,19 +21,18 @@ public class PdfInvoiceGenerator {
             PdfWriter writer = PdfWriter.getInstance(document, out);
            
 
-            // Register header
+           
               writer.setPageEvent(new PdfHeaderFooter());
-           // ⬅️ Register the footer handler
+        
             writer.setPageEvent(new PdfFooter()); 
             document.open();
 
-            // Add logo
+           
             Image logo = Image.getInstance("src/main/resources/static/images/logo.png");
             logo.scaleToFit(100, 50);
             logo.setAlignment(Image.ALIGN_LEFT);
             document.add(logo);
 
-            // Title
             Font titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 22, BaseColor.DARK_GRAY);
             Paragraph title = new Paragraph("Booking Invoice", titleFont);
             title.setAlignment(Element.ALIGN_CENTER);
@@ -41,7 +40,7 @@ public class PdfInvoiceGenerator {
             title.setSpacingAfter(20);
             document.add(title);
 
-            // Booking Details Table
+           
             PdfPTable table = new PdfPTable(2);
             table.setWidthPercentage(100);
             table.setSpacingBefore(10f);
@@ -51,7 +50,7 @@ public class PdfInvoiceGenerator {
             Font headerFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.WHITE);
             Font cellFont = FontFactory.getFont(FontFactory.HELVETICA, 12);
 
-            BaseColor headerColor = new BaseColor(63, 81, 181); // Indigo
+            BaseColor headerColor = new BaseColor(63, 81, 181); // 
 
             addTableRow(table, "Booking ID:", String.valueOf(booking.getId()), headerFont, cellFont, headerColor);
             addTableRow(table, "Customer Name:", booking.getCustomerName(), headerFont, cellFont, headerColor);
@@ -64,23 +63,23 @@ public class PdfInvoiceGenerator {
 
             document.add(table);
 
-            // Thank you message
+           
             Paragraph thankYou = new Paragraph("Thank you for choosing HomeEase!", cellFont);
             thankYou.setAlignment(Element.ALIGN_CENTER);
             thankYou.setSpacingAfter(30f);
             document.add(thankYou);
 
-         // Create a table with 2 columns: QR code on left, Signature on right
+         
             PdfPTable footerTable = new PdfPTable(2);
             footerTable.setWidthPercentage(100);
             footerTable.setSpacingBefore(40f);
             footerTable.setWidths(new float[]{1, 1});
 
-            // Font for labels
+          
             Font smallFont = FontFactory.getFont(FontFactory.HELVETICA, 10);
             Font boldFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.BLACK);
 
-            // LEFT CELL: QR Code and Label
+     
             PdfPCell qrCell = new PdfPCell();
             qrCell.setBorder(Rectangle.NO_BORDER);
 
@@ -88,7 +87,7 @@ public class PdfInvoiceGenerator {
             qrLabel.setSpacingAfter(5f);
             qrCell.addElement(qrLabel);
 
-            // Generate QR code
+         
             String qrContent = String.format(
             	    "Booking Invoice\n" +
             	    "---------------\n" +
@@ -113,9 +112,9 @@ public class PdfInvoiceGenerator {
             qrImage.scaleToFit(100, 100);
             qrImage.setAlignment(Image.ALIGN_LEFT);
 
-            qrCell.addElement(qrImage);  // ✅ Add QR image to the left cell
+            qrCell.addElement(qrImage); 
 
-            // RIGHT CELL: Signature
+            
             PdfPCell signatureCell = new PdfPCell();
             signatureCell.setBorder(Rectangle.NO_BORDER);
             signatureCell.setHorizontalAlignment(Element.ALIGN_RIGHT);
@@ -139,14 +138,13 @@ public class PdfInvoiceGenerator {
             signatureCell.addElement(date);
 
 
-            // Add both cells to the table
             footerTable.addCell(qrCell);
             footerTable.addCell(signatureCell);
 
-            // Add the table to the document
+            
             document.add(footerTable);
             
-         // Add Terms and Conditions
+       
             Font termsHeadingFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK);
             Font termsFont = FontFactory.getFont(FontFactory.HELVETICA, 9, BaseColor.DARK_GRAY);
 

@@ -388,7 +388,7 @@ public class AdminController {
 
         model.addAttribute("orderId", order.get("id"));
         model.addAttribute("amount", amount);
-        model.addAttribute("key", "rzp_test_c0hU261YbDuwY4");
+        model.addAttribute("key","rzp_test_HIfeSJ9VMApjsQ");
         return "payment/checkout";
     }
     

@@ -8,12 +8,12 @@ import com.homeease.entity.ServiceProvider;
 
 public interface ServiceProviderRepository extends JpaRepository<ServiceProvider, Long> {
 
-    // Find provider by email (used in login)
+    
     ServiceProvider findByEmail(String email);
 
-    // Check if email already exists (used in registration)
-    boolean existsByEmail(String email);  // ✅ Add this line
 
-    // Fetch providers by assigned service ID
+    boolean existsByEmail(String email);  
+
+
     List<ServiceProvider> findByAssignedServices_Id(Long serviceId);
 }

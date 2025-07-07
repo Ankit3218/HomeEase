@@ -102,6 +102,7 @@
         razorpayBtn.style.display = (mode === "Razorpay") ? "block" : "none";
         submitBtn.style.display = (mode === "Razorpay") ? "none" : "block";
     }
+    
 
     paymentModeSelect.addEventListener("change", toggleFields);
     window.addEventListener("DOMContentLoaded", toggleFields);
@@ -110,11 +111,12 @@
         const amount = parseFloat(document.querySelector('input[name="finalPrice"]').value || 0) * 100;
 
         const options = {
-            "key": "rzp_test_c0hU261YbDuwY4",
+            "key": "rzp_test_HIfeSJ9VMApjsQ",
             "amount": amount,
             "currency": "INR",
             "name": "HomeEase",
             "description": "Service Booking Payment",
+            "order_id": "[[${orderId}]]", 
             "image": "/images/logo.png",
             "handler": function (response) {
                 const form = document.getElementById("bookingForm");

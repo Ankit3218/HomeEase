@@ -15,12 +15,12 @@ public class QrCodeGenerator {
 	public static byte[] generateQRCodeImage(String data, int width, int height) throws Exception {
 	    QRCodeWriter qrCodeWriter = new QRCodeWriter();
 	    Hashtable<EncodeHintType, Object> hints = new Hashtable<>();
-	    hints.put(EncodeHintType.MARGIN, 1); // Small margin
+	    hints.put(EncodeHintType.MARGIN, 1); 
 
 	    BitMatrix bitMatrix = qrCodeWriter.encode(data, BarcodeFormat.QR_CODE, width, height, hints);
 
-	    // Make the image bigger and sharper
-	    int scale = 2; // scale factor
+	    
+	    int scale = 2;
 	    int scaledWidth = width * scale;
 	    int scaledHeight = height * scale;
 

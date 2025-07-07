@@ -9,14 +9,14 @@ public class PdfHeaderFooter extends PdfPageEventHelper {
 
     @Override
     public void onEndPage(PdfWriter writer, Document document) {
-        // Header without border
+        
         PdfPTable header = new PdfPTable(1);
         try {
             header.setWidths(new int[]{24});
             header.setTotalWidth(527);
             header.setLockedWidth(true);
             header.getDefaultCell().setFixedHeight(40);
-            header.getDefaultCell().setBorder(Rectangle.NO_BORDER); // ❌ Remove underline
+            header.getDefaultCell().setBorder(Rectangle.NO_BORDER); 
             header.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
             header.addCell(new Phrase("HomeEase - Smart Home Services", headerFont));
 
